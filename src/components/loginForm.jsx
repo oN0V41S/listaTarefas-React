@@ -1,31 +1,17 @@
 import "./loginForm.css";
 
-// Importando Funções e Componentes
-import { useState } from "react";
-
-export const LoginForm = ({children,formTitle}) => {
-    // Estados para armazenar as entradas do usuário
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
-  // Função que é chamada quando o formulário é enviado
-  const handleSubmit = (event) => {
-    // Impede que a página seja recarregada
-    event.preventDefault();
-
-    // Faz o console log das credenciais do usuário
-    console.log("Dados de Login:", { username, password });
-  };
+export const LoginForm = ({children,formTitle,formButton,onSubmit}) => {
 
   return (
-    <form onSubmit={handleSubmit} className="formLogin w-1/2 m-auto">
+    <form onSubmit={onSubmit} className="formLogin md:w-[35vw] m-auto md:mt-0 mt-[120px]">
       <h1>{formTitle}</h1>
       {children}
+      <button type="submit">{formButton}</button>
     </form>
   );
 };
 
-export const InputField = ({type,placeholder,value,children}) => {
+export const InputField = ({type,placeholder,value,children,onChange}) => {
   return (
     <div className="input-field">
       <input
@@ -33,6 +19,7 @@ export const InputField = ({type,placeholder,value,children}) => {
         placeholder={placeholder}
         required
         value={value}
+        onChange={onChange}
       />
       {children}
     </div>
