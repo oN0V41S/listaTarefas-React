@@ -28,16 +28,19 @@ export default function Cadastro(){
 
   return (
     <main className="login m-auto w-full mt-0 pt-20 h-[100vh]">
-      <LoginForm formTitle="Faça Login" formButton="Login" onSubmit={onSubmit}>
+      <LoginForm formTitle="Faça Cadastro" formButton="Cadastrar-se" onSubmit={onSubmit}>
+        <InputField type="text" placeholder="Nome" value={username} onChange={onChangeUsername}>
+          <FaUser className="icon" />
+        </InputField>
         <InputField type="text" placeholder="E-mail" value={username} onChange={onChangeUsername}>
           <FaUser className="icon" />
         </InputField>
         <InputField type="password" placeholder="Password" value={password} onChange={onChangePassword}>
           <FaLock className="icon" />
         </InputField>
-        <div className="signup-link">
-          <p>Não tem uma conta?</p>
-          <Link to="/cadastro">Registar</Link>
+        <div className="signup-link flex text-white m-4 m-auto justify-between">
+          <p>Já tem tem uma conta?</p>
+          <Link to="/">Faça Login</Link>
         </div>
       </LoginForm>
     </main>
