@@ -1,3 +1,9 @@
+import Layout from '../../components/layout/layout'
+
 export default function Tarefas() {
-  return <h1>Tarefas</h1>
+  return (
+    <Layout>
+      Salve pika mole
+    </Layout>
+  )
 }
