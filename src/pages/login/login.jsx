@@ -1,10 +1,11 @@
 import "./login.css";
-
 // Importando Funções e Componentes
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
+
+import login from '../../services/login';
 
 // Importando Assets
 import { FaUser, FaLock } from "react-icons/fa";
@@ -23,12 +24,15 @@ export default function Login() {
   }
 
   const onSubmit = () => {
-    window.alert(`Usuário: ${username} \n Senha: ${password}`)
+
+    login('miguelpereiralomaas@gmail.com', 'miguel123')
   }
+
+  login('miguelpereiralomaas@gmail.com', 'miguel123')
 
   return (
     <main className="login m-auto w-full mt-0 pt-20 h-[100vh]">
-      <LoginForm formTitle="Faça Login" formButton="Login" onSubmit={onSubmit}>
+      <LoginForm formTitle="Login" formButton="Login" onSubmit={onSubmit}>
         <InputField type="text" placeholder="E-mail" value={username} onChange={onChangeUsername}>
           <FaUser className="icon" />
         </InputField>
