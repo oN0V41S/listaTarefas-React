@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer{
+    display: flex;
+    width: 100%;
+    height: 220px;
+    background-color: #254B4A;
+}
+
+footer #imagens #logo{
+    margin-left: 3%;
+    margin-top: 10%;
+    width: 280px;
+    height: 110px;
+}
+
+footer #direitos{
+    margin-left: 11%;
+    margin-top: 5%;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px; 
+}
+
+footer #imagens1 {
+    display: flex;
+    margin-right: 25%;
+    align-items: center;
+}
+
+footer #imagens1 img{
+    margin-top: 50%;
+    margin-left:70px;
+    width: 45px;
+    height: 50px;
+}
+
+#footer #imagens1 #instagram{
+    margin-top: 7.5%;
+    margin-left:3px;
+    width: 60px;
+    height: 60px;
+}
+
+footer #textos1{
+    margin-right: 5%;
+    margin-top: 5%;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px; 
+    line-height: 170%;
+}
+
+footer a {
+    color: white;
+    text-decoration:solid; 
+  }
+
+footer a:hover {
+    color: rgb(237, 223, 223);
+    text-transform: solid;
+    text-decoration: none;
+  }
+
+footer #textos2 {
+    margin-top: 5%;
+    color: white;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 20px;
+    margin-right: 20%;
+    line-height: 150%;
+}
+
+footer #linha1{
+    margin-top: 8%;
+    width: 10%;
+    height: 1px;
+    background-color: #D9D9D9;
+    transform: rotate(90deg);
+}
+
+@media screen and (max-width: 480px) {
+
+    footer{
+        height: 190px;
+    }
+
+    footer #imagens #logo{
+        margin-top: 40px;
+        width: 150px;
+        height: 80px;
+        margin-left: 10px;
+    }
+
+    footer #textos1 {
+        font-size: 10px;
+        margin-left: 15px;
+    }
+
+    footer #textos2 {
+        font-size: 10px;
+    }
+
+    footer #direitos {
+        font-size: 8px;
+    }
+
+    footer #imagens1 #instagram {
+        width: 60px;
+        height: 60px;
+        margin-top: 18px;
+    }
+
+    footer #imagens1 #youtube {
+        width: 60px;
+        height: 60px;
+    }
+
+    footer #imagens1 {
+        
+        margin-left: -140px;
+        margin-top: -3px;
+    }
+
+    footer #imagens1 img {
+        margin-top: 20px;
+        margin-left: 10px;
+        width: 22px;
+        height: 20px;
+    }
+
+}
+
+    @media screen and (max-width: 480px) {
+        footer #imagens #logo{
+            margin-top: 70px;
+            width: 90px;
+            height: 50px;
+            margin-left: 10px;
+        } 
+
+        footer #textos1 {
+            font-size: 7px;
+            margin-left: -5px;
+            margin-top: 40px;
+        }
+    
+        footer #textos2 {
+            font-size: 7px;
+            margin-top: 40px;
+        }
+    
+        footer #direitos {
+            font-size: 6px;
+        }
+    
+        footer #imagens1 #instagram {
+            width: 60px;
+            height: 60px;
+            margin-top: 20px;
+        }
+    
+        footer #imagens1 #youtube {
+            width: 60px;
+            height: 60px;
+        }
+    
+        footer #imagens1 {
+            
+            margin-left: -80px;
+            margin-top: 15px;
+        }
+    
+        footer #imagens1 img {
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 15px;
+            height: 14px;
+        } 
+
+  @media screen and (max-width: 370px) and (max-width: 750px) {
+
+
+    footer #imagens #youtube{
+        margin-top: 19.3%;
+    }
+
+    footer #imagens #instagram{
+        margin-top: 29.7%;
+    }
+  }
+
+}

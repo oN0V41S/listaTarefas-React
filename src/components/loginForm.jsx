@@ -3,10 +3,10 @@ import "./loginForm.css";
 export const LoginForm = ({children,formTitle,formButton,onSubmit}) => {
 
   return (
-    <form className="formLogin md:w-[35vw] m-auto md:mt-0 mt-[120px]">
+    <form onSubmit={onSubmit} className="formLogin md:w-[35vw] m-auto md:mt-0 mt-[120px]">
       <h1>{formTitle}</h1>
       {children}
-      <button type="button" onClick={onSubmit}>{formButton}</button>
+      <button type="submit">{formButton}</button>
     </form>
   );
 };
