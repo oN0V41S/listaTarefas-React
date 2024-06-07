@@ -46,25 +46,14 @@ function Modal({ isOpen, setCloseModal, addTask }) {
     setTitleBackgroundColor(color);
   };
 
-  // Função para obter a data atual no formato DD/MM/YYYY
-  // const getCurrentDate = () => {
-  //     const today = new Date();
-  //     const day = String(today.getDate()).padStart(2, '0');
-  //     const month = String(today.getMonth() + 1).padStart(2, '0');
-  //     const year = today.getFullYear();
-  //     return `${day}/${month}/${year}`;
-  // };
 
   return (
     isOpen && (
       <div id="fundo-modal-adicionar">
         <div id="modal-adicionar" className="flex flex-col">
-          <div
-            id="titulo-modal"
-            style={{ backgroundColor: titleBackgroundColor }}
-          >
+          <div id="titulo-modal" style={{ backgroundColor: titleBackgroundColor }}>
             <h1>Criar nova tarefa</h1>
-            <button id="fechar-modal" onClick={setCloseModal}>
+            <button type="button" id="fechar-modal" onClick={setCloseModal}>
               X
             </button>
           </div>

@@ -13,6 +13,7 @@ import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
 import { FiAlignJustify } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
+import CreateTaskModal from "../../components/createTaskModal";
 
 function Tarefas() {
   // Manipulação de Tarefas e Modal de Tarefas
@@ -20,7 +21,9 @@ function Tarefas() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+    setTasks([...tasks,newTask])
+    console.log(tasks)
+    // setTasks([...tasks, newTask]);
     setOpenModal(false);
   };
   const removeTask = (id) => {
@@ -40,6 +43,15 @@ function Tarefas() {
   const handleChangeOption = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
+
+  const [modalCreateTask, setModalCreateTask] = useState();
+  const [taskEx, setTaskEx] = useState({});
+  const handleChangeTask = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    setTaskEx({...taskEx,[name]:value})
+    console.log(taskEx)
+  }
 
   return (
     <>
@@ -114,6 +126,17 @@ function Tarefas() {
           isOpen={openModal}
           setCloseModal={() => setOpenModal(!openModal)}
           addTask={addTask}
+        />
+        <button onClick={() => setModalCreateTask(!modalCreateTask)}>
+          Abrir Modal de criar Tarefas
+        </button>
+        <CreateTaskModal
+          modalIsOpen={modalCreateTask}
+          closeModal={() => setModalCreateTask(!modalCreateTask)}
+          handleChangeTask={handleChangeTask}
+          taskValue={taskEx}
+          onSubmit={addTask}
+          // taskBackground={taskBackground}
         />
       </main>
     </>
