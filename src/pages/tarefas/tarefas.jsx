@@ -48,55 +48,50 @@ function Tarefas() {
           </h1>
         </div>
       </header>
-      <div id="titulo">
-        <h1>
-          {" "}
-          <div id="icone-tarefa">
-            <BsListTask />
-          </div>
-          TAREFAS
-        </h1>
-      </div>
-      <div id="titulo-filtros">
-        <h3>Filtros</h3>
-        <div id="filtros">
-          <div id="disciplinas">
-            <h3>
-              Disciplinas{" "}
-              <div id="icone-baixo">
-                {" "}
-                <FiChevronDown />{" "}
-              </div>{" "}
-            </h3>
-          </div>
-          {/* <div id="data">
-            <h3>
-              Data{" "}
-              <div id="icone-baixo">
-                {" "}
-                <FiChevronDown />{" "}
-              </div>
-            </h3>
-          </div> */}
+      <main className="p-5">
+        <div id="titulo" className="w-[83vw] flex mt-10 mb-10 m-auto align-center">
+          <BsListTask className="mt-auto mb-auto mr-5"/>
+          <span className="h-max">TAREFAS</span>
         </div>
-      </div>
-      <div id="lista-tasksquare">
-        <div id="adicionar-tarefa" onClick={() => setOpenModal(true)}>
-          <div id="titulo-adicionar">
-            <h3>Adicionar Tarefa</h3>
+        <div id="titulo-filtros" className="w-[83vw] m-auto">
+          <h3>Filtros</h3>
+          <div id="filtros">
+            <div id="disciplinas">
+              <h3>
+                Disciplinas
+                <div id="icone-baixo">
+                  <FiChevronDown />
+                </div>
+              </h3>
+            </div>
           </div>
-          <img src={adicionar} alt="adicionar tarefa"></img>
         </div>
-        {tasks.map((task, index) => (
-          <TaskSquare
-            key={index}
-            task={task}
-            taskId={task.id}
-            onDelete={removeTask}
-          />
-        ))}
-      </div>
-      <Modal isOpen={openModal} setCloseModal={() => setOpenModal(!openModal)} addTask={addTask} />
+        <div id="lista-tasksquare" className="m-auto">
+          <div id="adicionar-tarefa" onClick={() => setOpenModal(true)}>
+            <div id="titulo-adicionar">
+              <h3 className="m-auto p-2 text-center">Adicionar Tarefa</h3>
+            </div>
+            <img
+              src={adicionar}
+              alt="adicionar tarefa"
+              className="m-auto mt-10"
+            ></img>
+          </div>
+          {tasks.map((task, index) => (
+            <TaskSquare
+              key={index}
+              task={task}
+              taskId={task.id}
+              onDelete={removeTask}
+            />
+          ))}
+        </div>
+        <Modal
+          isOpen={openModal}
+          setCloseModal={() => setOpenModal(!openModal)}
+          addTask={addTask}
+        />
+      </main>
     </>
   );
 }

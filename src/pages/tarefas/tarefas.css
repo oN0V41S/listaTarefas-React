@@ -52,25 +52,21 @@ header img{
     margin-right: 300px;
 }
 
-#titulo {
+/* #titulo {
     width: 100vw;
     display: flex;
-    margin-bottom: -15px;
-}
+} */
 
-#titulo h1{
+/* #titulo h1{
     margin-left: 36vh;
     margin-top: 50px;
-}
+} */
 
 #titulo #icone-tarefa {
-    margin-bottom: -50px;
-    margin-left: -40px;
+    /* margin-bottom: -50px;
+    margin-left: -40px; */
 }
 
-#titulo-filtros {
-    margin-left: 30vh;
-}
 
 #filtros {
     display: flex;
@@ -121,10 +117,6 @@ header img{
     border-radius: 5px 5px 0px 0px;
 }
 
-#titulo-adicionar h3{
-    margin-left: 40px;
-}
-
 #adicionar-tarefa {
     background-color: rgb(255, 255, 255);
     width: 220px;
@@ -142,8 +134,8 @@ header img{
 #adicionar-tarefa img{
     width: 100px;
     height: 100px;
-    margin-left: 60px;
-    margin-top: 50px;
+    /* margin-left: 60px;
+    margin-top: 50px; */
 }
 
 #adicionar-tarefa:hover {
@@ -168,9 +160,9 @@ header img{
 #lista-tasksquare {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     width: 83vw;
-    margin-left: 12%;
+    /* margin-left: 12%; */
     gap: 50px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }

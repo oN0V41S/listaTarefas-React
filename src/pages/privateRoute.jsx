@@ -5,9 +5,7 @@ import { Navigate } from 'react-router-dom';
 // import axios from 'axios'
 
 export default function PrivateRoute({children}){
-	const [user,setUser] = useState();
-	setUser(true)
-
+	const [user,setUser] = useState(true);
     // Validando Token do Usuário
 	// useEffect(()=>{
 	// 	const validateToken = async() => {
