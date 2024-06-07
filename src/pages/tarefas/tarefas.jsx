@@ -1,14 +1,21 @@
+// Importando Estilo e Funções do React
+import "./tarefas.css";
 import React, { useState } from "react";
+
+// Importando Componentes
 import TaskSquare from "../../components/taskSquare";
 import Modal from "../../components/modal";
+import Select from "react-select";
+
+// Importando Assets
 import logo from "../../assets/logoSquad (1).png";
 import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
 import { FiAlignJustify } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
-import "./tarefas.css";
 
 function Tarefas() {
+  // Manipulação de Tarefas e Modal de Tarefas
   const [openModal, setOpenModal] = useState(false);
   const [tasks, setTasks] = useState([]);
 
@@ -16,11 +23,22 @@ function Tarefas() {
     setTasks([...tasks, newTask]);
     setOpenModal(false);
   };
-
   const removeTask = (id) => {
     console.log(id);
     const removedTasks = tasks.filter((task) => task.id !== id);
     setTasks(removedTasks);
+  };
+
+  // Variáveis de Dropdown e Menu
+  const [selectedOption, setSelectedOption] = useState(null);
+  const optionsExample = [
+    { value: "", label: "Nenhum" },
+    { value: "1", label: "Opção 1" },
+    { value: "2", label: "Opção 2" },
+    { value: "3", label: "Opção 3" },
+  ];
+  const handleChangeOption = (selectedOption) => {
+    setSelectedOption(selectedOption);
   };
 
   return (
@@ -49,20 +67,26 @@ function Tarefas() {
         </div>
       </header>
       <main className="p-5">
-        <div id="titulo" className="w-[83vw] flex mt-10 mb-10 m-auto align-center">
-          <BsListTask className="mt-auto mb-auto mr-5"/>
-          <span className="h-max">TAREFAS</span>
+        <div
+          id="titulo"
+          className="w-[83vw] flex mt-4 mb-10 m-auto align-center"
+        >
+          <BsListTask className="mt-auto mb-auto mr-5" />
+          <h1 className="h-max font-normal text-xl">TAREFAS</h1>
         </div>
         <div id="titulo-filtros" className="w-[83vw] m-auto">
-          <h3>Filtros</h3>
+          <h3 className="text-2xl mb-4 font-normal">Filtros</h3>
           <div id="filtros">
             <div id="disciplinas">
-              <h3>
-                Disciplinas
-                <div id="icone-baixo">
-                  <FiChevronDown />
-                </div>
-              </h3>
+              <h3>Disciplinas</h3>
+              <Select
+                className="w-auto"
+                options={optionsExample}
+                value={selectedOption}
+                onChange={handleChangeOption}
+                placeholder="Nenhuma"
+                // isSearchable // Parâmetro para procurar valores
+              />
             </div>
           </div>
         </div>
