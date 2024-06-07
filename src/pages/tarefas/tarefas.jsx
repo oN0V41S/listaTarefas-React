@@ -8,12 +8,10 @@ import Modal from "../../components/modal";
 import Select from "react-select";
 
 // Importando Assets
-import logo from "../../assets/logoSquad (1).png";
 import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
-import { FiAlignJustify } from "react-icons/fi";
-import { FiChevronDown } from "react-icons/fi";
 import CreateTaskModal from "../../components/createTaskModal";
+import Layout from "../../components/layout";
 
 function Tarefas() {
   // Manipulação de Tarefas e Modal de Tarefas
@@ -21,8 +19,8 @@ function Tarefas() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (newTask) => {
-    setTasks([...tasks,newTask])
-    console.log(tasks)
+    setTasks([...tasks, newTask]);
+    console.log(tasks);
     // setTasks([...tasks, newTask]);
     setOpenModal(false);
   };
@@ -47,37 +45,14 @@ function Tarefas() {
   const [modalCreateTask, setModalCreateTask] = useState();
   const [taskEx, setTaskEx] = useState({});
   const handleChangeTask = (e) => {
-    const name = e.target.name
-    const value = e.target.value
-    setTaskEx({...taskEx,[name]:value})
-    console.log(taskEx)
-  }
+    const name = e.target.name;
+    const value = e.target.value;
+    setTaskEx({ ...taskEx, [name]: value });
+    console.log(taskEx);
+  };
 
   return (
-    <>
-      <header>
-        <div id="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        <div id="instituicao">
-          <h1>
-            Instituição{" "}
-            <div id="icone-menu">
-              {" "}
-              <FiAlignJustify />{" "}
-            </div>
-          </h1>
-        </div>
-        <div id="usuario">
-          <h1>
-            Usuário{" "}
-            <div id="icone-baixo">
-              {" "}
-              <FiChevronDown />{" "}
-            </div>
-          </h1>
-        </div>
-      </header>
+    <Layout>
       <main className="p-5">
         <div
           id="titulo"
@@ -139,7 +114,7 @@ function Tarefas() {
           // taskBackground={taskBackground}
         />
       </main>
-    </>
+    </Layout>
   );
 }
 
