@@ -70,7 +70,7 @@ export default function ValidarEmail() {
           )}
           <p className="texto-normal">Ja possui Conta?</p>
           <Link className="texto-normal" to="/">Login</Link>
-          <a onClick={reenviarCodigoVerificacao} className="link"> Não recebi o código de verificação</a>
+          <button type="button" onClick={reenviarCodigoVerificacao} className="link"> Não recebi o código de verificação</button>
         </div>
       </LoginForm>
     </main>

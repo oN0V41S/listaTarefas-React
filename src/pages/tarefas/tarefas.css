@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background-color: #F2F5F8;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+    height: 100px;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header h1 {
+    font-size: 21px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header #instituicao #icone-menu {
+    margin-top: -23px;
+    margin-left: 110px;
 }
 
-.App-link {
-  color: #61dafb;
+header #instituicao {
+    padding-left: 20px;
+    margin-left: 30vw ;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header #instituicao:hover {
+    cursor: pointer;
+}
+
+header #usuario {
+    padding-left: 20px;
+    margin-left: 50px;
+}
+
+header #usuario:hover {
+    cursor: pointer;
+}
+
+header #usuario #icone-baixo {
+    margin-top: -23px;
+    margin-left: 80px;
+}
+
+header img{
+    width: 150px;
+    height: 60px;
+    margin-left: 60px;
+    margin-right: 300px;
+}
+
+#titulo {
+    width: 100vw;
+    display: flex;
+    margin-bottom: -15px;
+}
+
+#titulo h1{
+    margin-left: 36vh;
+    margin-top: 50px;
+}
+
+#titulo #icone-tarefa {
+    margin-bottom: -50px;
+    margin-left: -40px;
+}
+
+#titulo-filtros {
+    margin-left: 30vh;
+}
+
+#filtros {
+    display: flex;
+    gap: 70px;
+}
+
+#filtros #disciplinas {
+    display: flex;
+    align-items: center;
+    background-color: rgb(201, 201, 201);
+    padding-left: 30px;
+    height: 40px;
+    padding-right: 10px;
+    border-radius: 8px;
+}
+
+#filtros #disciplinas h3 {
+    margin-left: -20px;
+}
+
+#filtros #data {
+    display: flex;
+    align-items: center;
+    background-color: rgb(201, 201, 201);
+    padding-left: 30px;
+    height: 40px;
+    padding-right: 10px;
+    border-radius: 8px;
+}
+
+#filtros #data h3 {
+    margin-left: -20px;
+}
+
+#filtros #icone-baixo {
+    margin-top: -20px;
+    margin-left: 180px;
+}
+
+#titulo-adicionar {
+    margin-left: -30px;
+    background-color: #9BDAFD;
+    width: 220px;
+    padding-right: 30px;
+    padding-left: 30px; 
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+#titulo-adicionar h3{
+    margin-left: 40px;
+}
+
+#adicionar-tarefa {
+    background-color: rgb(255, 255, 255);
+    width: 220px;
+    padding-right: 30px;
+    padding-left: 30px; 
+    height: 255px;
+    -webkit-box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
+    box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+#adicionar-tarefa img{
+    width: 100px;
+    height: 100px;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+#adicionar-tarefa:hover {
+    cursor: pointer;
+}
+
+
+#icon-adicionar {
+    border: none;
+    border-radius: 90px;
+    background-color: #ffffff;
+}
+
+#icon-adicionar img {
+    margin-left: 50%;
+}
+
+#icon-adicionar:hover {
+    cursor: pointer;
+}
+
+#lista-tasksquare {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    width: 83vw;
+    margin-left: 12%;
+    gap: 50px;
+    margin-bottom: 50px;
 }
