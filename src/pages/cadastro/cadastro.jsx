@@ -1,12 +1,12 @@
-import './cadastro.css'
+import "./cadastro.css";
 
 // Importando Funções e Componentes
-import React, { useState} from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
-import cadastro from '../../services/cadastro';
+import cadastro from "../../services/cadastro";
 
 // Importando Assets
 import { FaUser, FaLock } from "react-icons/fa";
@@ -49,10 +49,13 @@ export default function Cadastro() {
   };
 
   const textosErro = {
-    senhasDiferentes: "As senhas informadas não coincidem. Por favor, verifique e tente novamente.",
+    senhasDiferentes:
+      "As senhas informadas não coincidem. Por favor, verifique e tente novamente.",
     campoVazio: "Por favor, preencha todos os campos antes de prosseguir.",
-    emailJaExiste: "O e-mail inserido já está em uso. Por favor, tente com um e-mail diferente ou faça login se já possui uma conta.",
-    emailDiferente: "Os emails informados não coincidem. Por favor, verifique e tente novamente."
+    emailJaExiste:
+      "O e-mail inserido já está em uso. Por favor, tente com um e-mail diferente ou faça login se já possui uma conta.",
+    emailDiferente:
+      "Os emails informados não coincidem. Por favor, verifique e tente novamente.",
   };
 
   const onSubmit = () => {
@@ -60,17 +63,17 @@ export default function Cadastro() {
 
     setTextErro(false);
     if (password && email && username && password1) {
-      if (password1 === password ) {
-        if(email === email1){
-          cadastro(username, email, password).then(retorno => {
+      if (password1 === password) {
+        if (email === email1) {
+          cadastro(username, email, password).then((retorno) => {
             setIsLoading(false);
             if (retorno.validacao === false) {
               setTextErro("emailJaExiste");
-            }else{
-              navigate('/validarEmail')
+            } else {
+              // navigate("/validarEmail");
             }
-          })    
-        }else{
+          });
+        } else {
           setIsLoading(false);
           setTextErro("emailDiferente");
         }
@@ -86,26 +89,54 @@ export default function Cadastro() {
 
   return (
     <main className="login m-auto w-full mt-0 pt-10 pb-10 h-auto">
-      <LoginForm formTitle="Faça Cadastro" formButton={isLoading ? "Carregando..." : "Cadastrar-se"} onSubmit={onSubmit} isLoading={isLoading}>
-        <InputField type="text" placeholder="Nome" value={username} onChange={onChangeUsername}>
+      <LoginForm
+        formTitle="Faça Cadastro"
+        formButton={isLoading ? "Carregando..." : "Cadastrar-se"}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+      >
+        <InputField
+          type="text"
+          placeholder="Nome"
+          value={username}
+          onChange={onChangeUsername}
+        >
           <FaUser className="icon" />
         </InputField>
-        <InputField type="text" placeholder="E-mail" value={email} onChange={onChangeEmail}>
+        <InputField
+          type="text"
+          placeholder="E-mail"
+          value={email}
+          onChange={onChangeEmail}
+        >
           <FaUser className="icon" />
         </InputField>
-        <InputField type="text" placeholder="Confirme o email" value={email1} onChange={onChangeEmail1}>
+        <InputField
+          type="text"
+          placeholder="Confirme o email"
+          value={email1}
+          onChange={onChangeEmail1}
+        >
           <FaUser className="icon" />
         </InputField>
-        <InputField type="password" placeholder="Password" value={password} onChange={onChangePassword}>
+        <InputField
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onChangePassword}
+        >
           <FaLock className="icon" />
         </InputField>
-        <InputField type="password" placeholder="Confirme a senha" value={password1} onChange={onChangePassword1}>
+        <InputField
+          type="password"
+          placeholder="Confirme a senha"
+          value={password1}
+          onChange={onChangePassword1}
+        >
           <FaLock className="icon" />
         </InputField>
         <div className="signup-link flex text-white m-4 m-auto justify-between">
-          {textoErro && (
-            <p className="textErro">{textosErro[textoErro]}</p>
-          )}
+          {textoErro && <p className="textErro">{textosErro[textoErro]}</p>}
           <p>Já tem uma conta?</p>
           <Link to="/">Faça Login</Link>
         </div>
