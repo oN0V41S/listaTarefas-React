@@ -6,28 +6,12 @@ import { Link } from "react-router-dom";
 export default function Layout({ children }) {
   const Header = () => {
     return (
-      <header>
-        <div id="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        <div id="instituicao">
-          <h1>
-            Instituição{" "}
-            <div id="icone-menu">
-              {" "}
-              <FiAlignJustify />{" "}
-            </div>
-          </h1>
-        </div>
-        <div id="usuario">
-          <h1>
-            Usuário{" "}
-            <div id="icone-baixo">
-              {" "}
-              <FiChevronDown />{" "}
-            </div>
-          </h1>
-        </div>
+      <header className="flex items-center justify-between w-[100%] pr-[15vw] pl-[15vw]">
+        <img src={logo} alt="logo" className="m-0 mt-auto mb-auto" />
+        <button id="usuario" className="flex items-center gap-1">
+          <h1>Sair</h1>
+          <FiChevronDown />
+        </button>
       </header>
     );
   };

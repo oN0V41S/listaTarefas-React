@@ -1,55 +1,33 @@
-// Importando Estilo e Funções do React
+// Importando Estilo
 import "./tarefas.css";
-import React, { useState } from "react";
 
-// Importando Componentes
+// Componentes
 import TaskSquare from "../../components/taskSquare";
-import Modal from "../../components/modal";
-import Select from "react-select";
-
-// Importando Assets
-import adicionar from "../../assets/adicionar.png";
-import { BsListTask } from "react-icons/bs";
 import CreateTaskModal from "../../components/createTaskModal";
 import Layout from "../../components/layout";
 
+// Serviços e Funções
+import AdicionarTarefa from "../../services/tarefas";
+import React, { useState } from "react";
+
+// Assets
+import adicionar from "../../assets/adicionar.png";
+import { BsListTask } from "react-icons/bs";
+
 function Tarefas() {
-  // Manipulação de Tarefas e Modal de Tarefas
-  const [openModal, setOpenModal] = useState(false);
-  const [tasks, setTasks] = useState([]);
+  // Manipulação de Tarefas
+  const [tasks, setTasks] = useState([
+    {
+      nomeTarefa: "Tarefa",
+      nomeGrupo: "SENAI Suiço Brasileira",
+      nomeMateria: "PWBE",
+      descricao: "Fazer Trabalho de n sei oq",
+      dataTermino: "2024-06-12",
+    },
+  ]);
 
-  const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
-    console.log(tasks);
-    // setTasks([...tasks, newTask]);
-    setOpenModal(false);
-  };
-  const removeTask = (id) => {
-    console.log(id);
-    const removedTasks = tasks.filter((task) => task.id !== id);
-    setTasks(removedTasks);
-  };
-
-  // Variáveis de Dropdown e Menu
-  const [selectedOption, setSelectedOption] = useState(null);
-  const optionsExample = [
-    { value: "", label: "Nenhum" },
-    { value: "1", label: "Opção 1" },
-    { value: "2", label: "Opção 2" },
-    { value: "3", label: "Opção 3" },
-  ];
-  const handleChangeOption = (selectedOption) => {
-    setSelectedOption(selectedOption);
-  };
-
+  // Manipulação de Modal
   const [modalCreateTask, setModalCreateTask] = useState();
-  const [taskEx, setTaskEx] = useState({});
-  const handleChangeTask = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setTaskEx({ ...taskEx, [name]: value });
-    console.log(taskEx);
-  };
 
   return (
     <Layout>
@@ -61,7 +39,7 @@ function Tarefas() {
           <BsListTask className="mt-auto mb-auto mr-5" />
           <h1 className="h-max font-normal text-xl">TAREFAS</h1>
         </div>
-        <div id="titulo-filtros" className="w-[83vw] m-auto">
+        {/* <div id="titulo-filtros" className="w-[83vw] m-auto">
           <h3 className="text-2xl mb-4 font-normal">Filtros</h3>
           <div id="filtros">
             <div id="disciplinas">
@@ -76,9 +54,13 @@ function Tarefas() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
         <div id="lista-tasksquare" className="m-auto">
-          <div id="adicionar-tarefa" onClick={() => setOpenModal(true)}>
+          <div
+            id="adicionar-tarefa"
+            onClick={() => setModalCreateTask(!modalCreateTask)}
+            className="m-0 mt-0 mr-0"
+          >
             <div id="titulo-adicionar">
               <h3 className="m-auto p-2 text-center">Adicionar Tarefa</h3>
             </div>
@@ -93,25 +75,15 @@ function Tarefas() {
               key={index}
               task={task}
               taskId={task.id}
-              onDelete={removeTask}
+              onDelete={() => {
+                AdicionarTarefa(task);
+              }}
             />
           ))}
         </div>
-        <Modal
-          isOpen={openModal}
-          setCloseModal={() => setOpenModal(!openModal)}
-          addTask={addTask}
-        />
-        <button onClick={() => setModalCreateTask(!modalCreateTask)}>
-          Abrir Modal de criar Tarefas
-        </button>
         <CreateTaskModal
           modalIsOpen={modalCreateTask}
           closeModal={() => setModalCreateTask(!modalCreateTask)}
-          handleChangeTask={handleChangeTask}
-          taskValue={taskEx}
-          onSubmit={addTask}
-          // taskBackground={taskBackground}
         />
       </main>
     </Layout>
