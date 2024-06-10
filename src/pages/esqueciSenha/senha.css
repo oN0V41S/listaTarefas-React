@@ -17,3 +17,20 @@
     color: white; /* Cor ao passar o mouse sobre o link */
     text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
 }
+
+.link2 {
+  color: white;
+  cursor: pointer; /* Adicionado para tornar o link clicável */
+  text-decoration: none; /* Remover sublinhado */
+  transition: color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.link2:hover {
+  color: white; /* Cor ao passar o mouse sobre o link */
+  text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+}
+
+.texto-normal{
+    color: white;
+  }
+

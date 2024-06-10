@@ -19,6 +19,9 @@ export default function ValidarEmail() {
   // Estado para tratar o tempo de requisição
   const [isLoading, setIsLoading] = useState(false);
 
+  const [enviarCodigo, setEnviarCodigo] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(60);
+
   // Pegando email do localStorage
   let emailLocalSotorage = localStorage.getItem('email');
 
@@ -36,7 +39,21 @@ export default function ValidarEmail() {
   }
   async function reenviarCodigoVerificacao(){
     reenviarCodigo(emailLocalSotorage)
+    setEnviarCodigo(true)
+    setTimeLeft(60)
+
+    const timer = setInterval(() => {
+      setTimeLeft(prevTime => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          setEnviarCodigo(false);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
   }
+
   const onSubmit = () => {
 
     setIsLoading(true);
@@ -55,6 +72,7 @@ export default function ValidarEmail() {
       });
     }else{
       setTextosErros('campoVazio')
+      setIsLoading(false);
     }
   }
 
@@ -69,9 +87,13 @@ export default function ValidarEmail() {
             <p className="texto-erro">{textosErro[textoErros]}</p>
           )}
           <p className="texto-normal">Ja possui Conta?</p>
-          <Link className="texto-normal" to="/">Login</Link>
-          <button type="button" onClick={reenviarCodigoVerificacao} className="link"> Não recebi o código de verificação</button>
-        </div>
+          <Link className="link" to="/">Login</Link>
+          {enviarCodigo ? (
+            <p className="texto-normal">Por favor, aguarde {timeLeft} segundos para reenviar  .</p>
+          ) : (
+            <a onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</a>
+          )}
+          </div>
       </LoginForm>
     </main>
   );

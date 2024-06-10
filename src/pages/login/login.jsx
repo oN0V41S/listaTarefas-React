@@ -74,7 +74,8 @@ export default function Login() {
             <p className="texto-erro">{textosErro[loginFalse]}</p>
           )}
           <p className="texto-normal">Ainda não possui uma conta?</p>
-          <Link className="texto-normal" to="/cadastro">Registrar-se</Link>
+          <Link className="link" to="/cadastro">Registrar-se</Link>
+          <Link className="link" to="/digitarEmail">esqueceu senha</Link>
         </div>
       </LoginForm>
     </main>
