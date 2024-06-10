@@ -51,6 +51,7 @@ export default function Login() {
           setLoginFalse('emailNaoVerificado')
           navigate('/validarEmail')
         }else{
+          navigate('/tarefas')
           setLoginFalse(false)
         }
       }else{

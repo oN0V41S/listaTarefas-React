@@ -2,26 +2,23 @@
 import "./tarefas.css";
 
 // Componentes
-import TaskSquare from "../../components/taskSquare";
-import CreateTaskModal from "../../components/createTaskModal";
+import CreateTaskModal from "../../components/Tasks/createTaskModal";
 import Layout from "../../components/layout";
 
 // Serviços e Funções
-import AdicionarTarefa from "../../services/tarefas";
 import React, { useState } from "react";
 
 // Assets
 import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
+import TaskCard from "../../components/Tasks/taskCard";
 
 function Tarefas() {
   // Manipulação de Tarefas
   const [tasks, setTasks] = useState([
     {
-      nomeTarefa: "Tarefa",
-      nomeGrupo: "SENAI Suiço Brasileira",
-      nomeMateria: "PWBE",
-      descricao: "Fazer Trabalho de n sei oq",
+      nome: "Tarefa",
+      descricao: "Sequela",
       dataTermino: "2024-06-12",
     },
   ]);
@@ -39,27 +36,11 @@ function Tarefas() {
           <BsListTask className="mt-auto mb-auto mr-5" />
           <h1 className="h-max font-normal text-xl">TAREFAS</h1>
         </div>
-        {/* <div id="titulo-filtros" className="w-[83vw] m-auto">
-          <h3 className="text-2xl mb-4 font-normal">Filtros</h3>
-          <div id="filtros">
-            <div id="disciplinas">
-              <h3>Disciplinas</h3>
-              <Select
-                className="w-auto"
-                options={optionsExample}
-                value={selectedOption}
-                onChange={handleChangeOption}
-                placeholder="Nenhuma"
-                // isSearchable // Parâmetro para procurar valores
-              />
-            </div>
-          </div>
-        </div> */}
-        <div id="lista-tasksquare" className="m-auto">
+        <div id="lista-tasksquare" className="m-auto w-[90%] flex gap-9 flex-wrap">
           <div
             id="adicionar-tarefa"
             onClick={() => setModalCreateTask(!modalCreateTask)}
-            className="m-0 mt-0 mr-0"
+            className="m-0 mt-0 mr-0 rounded-lg shadow-xl"
           >
             <div id="titulo-adicionar">
               <h3 className="m-auto p-2 text-center">Adicionar Tarefa</h3>
@@ -71,13 +52,11 @@ function Tarefas() {
             ></img>
           </div>
           {tasks.map((task, index) => (
-            <TaskSquare
+            <TaskCard
               key={index}
-              task={task}
-              taskId={task.id}
-              onDelete={() => {
-                AdicionarTarefa(task);
-              }}
+              nome={task.nome}
+              descricao={task.descricao}
+              dataTermino={task.dataTermino}
             />
           ))}
         </div>

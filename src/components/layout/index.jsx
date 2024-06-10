@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export default function Layout({ children }) {
   const Header = () => {
     return (
-      <header className="flex items-center justify-between w-[100%] pr-[15vw] pl-[15vw]">
-        <img src={logo} alt="logo" className="m-0 mt-auto mb-auto" />
+      <header className="flex items-center justify-between w-[100%] pr-[15vw] pl-[15vw] p-5 bg-white">
+        <img src={logo} alt="logo" className="m-0 mt-auto mb-auto w-[8vw]" />
         <button id="usuario" className="flex items-center gap-1">
           <h1>Sair</h1>
           <FiChevronDown />

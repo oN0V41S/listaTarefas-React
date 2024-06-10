@@ -1,110 +1,11 @@
-
-
 body {
     background-color: #F2F5F8;
 }
-
-header {
-    height: 100px;
-    width: 100vw;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header h1 {
-    font-size: 21px;
-}
-
-header #instituicao #icone-menu {
-    margin-top: -23px;
-    margin-left: 110px;
-}
-
-header #instituicao {
-    padding-left: 20px;
-    margin-left: 30vw ;
-}
-
-header #instituicao:hover {
-    cursor: pointer;
-}
-
-header #usuario {
-    padding-left: 20px;
-    margin-left: 50px;
-}
-
-header #usuario:hover {
-    cursor: pointer;
-}
-
-header #usuario #icone-baixo {
-    margin-top: -23px;
-    margin-left: 80px;
-}
-
-header img{
-    width: 150px;
-    height: 60px;
-    margin-left: 60px;
-    margin-right: 300px;
-}
-
-/* #titulo {
-    width: 100vw;
-    display: flex;
-} */
-
-/* #titulo h1{
-    margin-left: 36vh;
-    margin-top: 50px;
-} */
-
-#titulo #icone-tarefa {
-    /* margin-bottom: -50px;
-    margin-left: -40px; */
-}
-
 
 #filtros {
     display: flex;
     gap: 70px;
 }
-/* 
-#filtros #disciplinas {
-    display: flex;
-    align-items: center;
-    background-color: rgb(201, 201, 201);
-    padding-left: 30px;
-    height: 40px;
-    padding-right: 10px;
-    border-radius: 8px;
-}
-
-#filtros #disciplinas h3 {
-    margin-left: -20px;
-}
-
-#filtros #data {
-    display: flex;
-    align-items: center;
-    background-color: rgb(201, 201, 201);
-    padding-left: 30px;
-    height: 40px;
-    padding-right: 10px;
-    border-radius: 8px;
-}
-
-#filtros #data h3 {
-    margin-left: -20px;
-}
-
-#filtros #icone-baixo {
-    margin-top: -20px;
-    margin-left: 180px;
-} */
 
 #titulo-adicionar {
     margin-left: -30px;
@@ -123,9 +24,9 @@ header img{
     padding-right: 30px;
     padding-left: 30px; 
     height: 255px;
-    -webkit-box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
+    /* -webkit-box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
     -moz-box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
-    box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35);
+    box-shadow: 0px 1px 7px 1px rgba(0,0,0,0.35); */
     border-radius: 15px;
 
 }
@@ -133,8 +34,6 @@ header img{
 #adicionar-tarefa img{
     width: 100px;
     height: 100px;
-    /* margin-left: 60px;
-    margin-top: 50px; */
 }
 
 #adicionar-tarefa:hover {
@@ -154,14 +53,4 @@ header img{
 
 #icon-adicionar:hover {
     cursor: pointer;
-}
-
-#lista-tasksquare {
-    display: flex;
-    flex-wrap: wrap;
-    /* margin-top: 50px; */
-    width: 83vw;
-    /* margin-left: 12%; */
-    gap: 50px;
-    /* margin-bottom: 50px; */
 }
