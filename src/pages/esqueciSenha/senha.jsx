@@ -9,8 +9,8 @@ import { InputField } from "../../components/loginForm";
 // Importando Assets
 import { FaLock } from "react-icons/fa";
 
-import reenviarCodigo from "../../services/reenviarCodigo";
-import recSenha from '../../services/recSenha';
+import reenviarCodigo from "../../services/auth/reenviarCodigo";
+import recSenha from '../../services/auth/recSenha';
 
 export default function EsqueciSenha() {
 
@@ -74,7 +74,7 @@ export default function EsqueciSenha() {
       setIsLoading(false);
       return(setTextErro('campoVazio'));
     }
-    if(password != password1){
+    if(password !== password1){
       setIsLoading(false);
       return(setTextErro('senhasDiferentes'));
     }
@@ -110,7 +110,7 @@ export default function EsqueciSenha() {
           {enviarCodigo ? (
             <p className="texto-normal">Por favor, aguarde {timeLeft} segundos para reenviar  .</p>
           ) : (
-            <a onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</a>
+            <button type='button' onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</button>
           )}
         </div>
       </LoginForm>

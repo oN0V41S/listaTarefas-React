@@ -6,8 +6,8 @@ import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
 // Importando as rotas da Api
-import validarEmail from '../../services/email';
-import reenviarCodigo from "../../services/reenviarCodigo";
+import validarEmail from '../../services/auth/email';
+import reenviarCodigo from "../../services/auth/reenviarCodigo";
 
 export default function ValidarEmail() {
   // Estados para armazenar as entradas do usuário
@@ -91,7 +91,7 @@ export default function ValidarEmail() {
           {enviarCodigo ? (
             <p className="texto-normal">Por favor, aguarde {timeLeft} segundos para reenviar  .</p>
           ) : (
-            <a onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</a>
+            <button type="button" onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</button>
           )}
           </div>
       </LoginForm>

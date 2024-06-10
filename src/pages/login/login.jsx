@@ -5,7 +5,7 @@ import {Link, useNavigate } from 'react-router-dom';
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
-import login from '../../services/login';
+import login from '../../services/auth/login';
 
 // Importando Assets
 import { FaUser, FaLock } from "react-icons/fa";

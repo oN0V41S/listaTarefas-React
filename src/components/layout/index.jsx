@@ -1,5 +1,4 @@
 import logo from "../../assets/logoSquad (1).png";
-import { FiAlignJustify } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
 import { Link } from "react-router-dom";
 

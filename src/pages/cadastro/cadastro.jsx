@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
-import cadastro from "../../services/cadastro";
+import cadastro from "../../services/auth/cadastro";
 
 // Importando Assets
 import { FaUser, FaLock } from "react-icons/fa";
@@ -70,7 +70,7 @@ export default function Cadastro() {
             if (retorno.validacao === false) {
               setTextErro("emailJaExiste");
             } else {
-              // navigate("/validarEmail");
+              navigate("/validarEmail");
             }
           });
         } else {

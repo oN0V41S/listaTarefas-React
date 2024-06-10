@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 
-import AdicionarTarefa from "../../services/tarefas/index";
+import {AdicionarTarefa} from "../../services/tarefas";
 
 export default function EditTaskModal({
   modalIsOpen,
@@ -62,26 +62,6 @@ export default function EditTaskModal({
           //   value={taskValue.descricao}
           name="descricao"
           resize
-        />
-        <input
-          type="text"
-          placeholder="Instituição"
-          className="pl-5 pr-5 p-3 w-[40%] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all"
-          onChange={(e) => {
-            setTaskUpdate({ nomeGrupo: e.target.value });
-          }}
-          //   value={taskValue.instituicao}
-          name="instituicao"
-        />
-        <input
-          type="text"
-          placeholder="Disciplina"
-          className="pl-5 pr-5 p-3 w-[40%] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all"
-          onChange={(e) => {
-            setTaskUpdate({ dataTermino: e.target.value });
-          }}
-          //   value={taskValue.disciplina}
-          name="disciplina"
         />
         <input
           type="date"

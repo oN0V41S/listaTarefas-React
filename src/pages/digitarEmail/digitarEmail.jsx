@@ -1,11 +1,11 @@
 import "./digitarEmail.css";
 // Importando Funções e Componentes
 import React, {useState} from 'react';
-import {Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
-import reenviarCodigo from "../../services/reenviarCodigo";
+import reenviarCodigo from "../../services/auth/reenviarCodigo";
 
 export default function DigitarEmail() {
   // Estados para armazenar as entradas do usuário
