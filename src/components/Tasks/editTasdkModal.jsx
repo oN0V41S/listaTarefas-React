@@ -1,27 +1,24 @@
 import { useState } from "react";
 import Modal from "react-modal";
 
-import {AdicionarTarefa} from "../../services/tarefas";
+import {AtualizarTarefa} from "../../services/tarefas";
 
 export default function EditTaskModal({
   modalIsOpen,
   closeModal,
-  task
+  taskName
 }) {
   Modal.setAppElement("#root");
 
   const [taskUpdate, setTaskUpdate] = useState({
-    nomeTarefa: "",
-    nomeGrupo: "",
-    nomeMateria: "",
+    nome: "",
     descricao:"",
     dataTermino: "",
   });
 
   const Submit = () => {
-    // Implementar Serviço para adicionar tarefa
-    AdicionarTarefa(taskUpdate);
-    console.log(taskUpdate);
+    AtualizarTarefa(taskUpdate,taskName)
+    closeModal()
   };
 
   return (
@@ -38,7 +35,6 @@ export default function EditTaskModal({
         <button onClick={closeModal}>close</button>
       </header>
       <form
-        onSubmit={Submit}
         // action={closeModal}
         className="w-[90%] m-auto mt-10 flex flex-wrap gap-5 justify-center"
       >
@@ -47,7 +43,7 @@ export default function EditTaskModal({
           placeholder="Nome da Tarefa"
           className="pl-5 pr-5 p-3 w-[85%] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all"
           onChange={(e) => {
-            setTaskUpdate({ nomeTarefa: e.target.value });
+            setTaskUpdate({...taskUpdate, nome: e.target.value });
           }}
           //   value={taskValue.nome}
           name="nome"
@@ -57,7 +53,7 @@ export default function EditTaskModal({
           placeholder="Descrição da Tarefa"
           className="pl-5 pr-5 p-3 w-[85%] h-[15vh] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all resize-none"
           onChange={(e) => {
-            setTaskUpdate({ descricao: e.target.value });
+            setTaskUpdate({...taskUpdate, descricao: e.target.value });
           }}
           //   value={taskValue.descricao}
           name="descricao"
@@ -67,20 +63,15 @@ export default function EditTaskModal({
           type="date"
           className="pl-5 pr-5 p-3 w-[85%] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all"
           onChange={(e) => {
-            setTaskUpdate({ data: e.target.value });
+            setTaskUpdate({...taskUpdate, dataTermino: e.target.value });
           }}
           //   value={taskValue.data}
           name="data"
         />
         <button
-          className="bg-red-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
-          type="submit"
-        >
-          Remover Tarefa
-        </button>
-        <button
           className="bg-blue-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
           type="submit"
+          onClick={Submit}
         >
           Atualizar Tarefa
         </button>
@@ -98,7 +89,7 @@ const style = {
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
     width: "35vw",
-    height: "90vh",
+    height: "70vh",
     border: "none",
     boxShadow: "0px 0px 50px 1px rgba(0,0,0,0.5)",
   },
