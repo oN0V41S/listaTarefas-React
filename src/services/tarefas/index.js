@@ -54,7 +54,7 @@ export async function BuscarTarefas() {
     const response = await axios.post(
       `${url}/listarTarefas/`,
       { idUsuario: `${userId}` },
-      header
+      header,
     );
     const tarefas = response.data.result[0].tarefas;
     console.log("Tarefas Buscadas");
@@ -81,10 +81,10 @@ export async function RemoverTarefa(nome) {
     const response = await axios.post(
       `${url}/deletartarefa/`,
       { idUsuario: `${userId}`, nomeTarefa: `${nome}` },
-      header
+      header,
     );
-    const status = response.result[0].status;
-    console.log(status);
+    // const status = response.result[0].status;
+    console.log(response);
     return;
   } catch (e) {
     console.log(`Erro ao remover tarefas:\n${e}`);
@@ -111,13 +111,24 @@ export async function AtualizarTarefa(task, taskName) {
       novaDataTermino: `${task.dataTermino}`,
       novaDescricao: `${task.descricao}`,
       novoStatus: "",
-      novaCor: ""
+      novaCor: "",
     };
 
     const response = await axios.post(`${url}/alterartarefa/`, body, header);
-    console.log(response);
+    console.log(response)
     return;
   } catch (e) {
-    console.log(`Erro ao remover tarefas:\n${e}`);
+    console.log(`Erro ao Atualizar tarefas:\n${e}`);
   }
+}
+
+export function FormatarData(dataString) {
+  // Remover a parte da hora da string
+  const dataSemHora = dataString.split('T')[0];
+
+  // Inverter a ordem da data (ano-mês-dia)
+  const partesData = dataSemHora.split('-');
+  const dataInvertida = `${partesData[2]}-${partesData[1]}-${partesData[0]}`;
+
+  return dataInvertida;
 }

@@ -8,12 +8,11 @@ import TaskCard from "../../components/Tasks/taskCard";
 
 // Serviços e Funções
 import React, { useEffect, useState } from "react";
-import { BuscarTarefas } from "../../services/tarefas";
+import { BuscarTarefas,RemoverTarefa } from "../../services/tarefas";
 
 // Assets
 import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
-import axios from "axios";
 
 function Tarefas() {
   // Manipulação de Tarefas
@@ -30,6 +29,14 @@ function Tarefas() {
     };
     listarTarefas();
   }, []);
+
+  const removeTask = ({ nome }) => {
+    try {
+      RemoverTarefa(nome);
+    } catch (e) {
+      console.log("erro ao remover tarefa");
+    }
+  };
 
   return (
     <Layout>
@@ -59,14 +66,21 @@ function Tarefas() {
               className="m-auto mt-10"
             ></img>
           </div>
-          {tasks.map((task, index) => (
-            <TaskCard
-              key={index}
-              nome={task.nome}
-              descricao={task.descricao}
-              dataTermino={task.dataTermino}
-            />
-          ))}
+          {tasks ? (
+            tasks.map((task, index) => (
+              <TaskCard
+                key={index}
+                nome={task.nome}
+                descricao={task.descricao}
+                dataTermino={task.dataTermino}
+                onRemove={() => {
+                  removeTask(task.nome);
+                }}
+              />
+            ))
+          ) : (
+            <>Carregando Tarefas</>
+          )}
         </div>
         <CreateTaskModal
           modalIsOpen={modalCreateTask}

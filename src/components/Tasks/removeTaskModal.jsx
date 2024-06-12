@@ -1,7 +1,14 @@
+import React from "react";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
+import { RemoverTarefa } from "../../services/tarefas";
 
-export default function RemoveTaskModal({ modalIsOpen, closeModal, onRemove }) {
+export default function RemoveTaskModal({ modalIsOpen, closeModal, taskName }) {
   Modal.setAppElement("#root");
+
+  const removeTask = () => {
+    RemoverTarefa(taskName);
+  };
 
   return (
     <Modal
@@ -15,13 +22,14 @@ export default function RemoveTaskModal({ modalIsOpen, closeModal, onRemove }) {
         action=""
         className="w-[75%] m-auto mt-3 flex justify-between text-white"
       >
-        <button
-          type="button"
+        <Link
+          to="/tarefas"
           className="bg-green-500 pl-7 p-1 pr-7 rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition-all"
-          onClick={onRemove}
+          onClick={removeTask}
+          replace
         >
           Sim
-        </button>
+        </Link>
         <button
           type="button"
           className="bg-red-500 pl-7 p-1 pr-7 rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition-all"

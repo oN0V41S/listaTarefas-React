@@ -1,23 +1,14 @@
 // Funções
 import { useState } from "react";
-
-// Serviços
-import { RemoverTarefa } from "../../services/tarefas";
+import { FormatarData } from "../../services/tarefas";
 
 // Componentes
 import EditTaskModal from "./editTasdkModal";
 import RemoveTaskModal from "./removeTaskModal";
-import { Navigate, useNavigate } from "react-router-dom";
 
-export default function TaskCard({ id, nome, descricao, dataTermino }) {
+export default function TaskCard({ nome, descricao, dataTermino }) {
   const [editModalState, setEditModalState] = useState(false);
   const [removeModalState, setRemoveModalState] = useState(false);
-
-  const removeTask = () => {
-    RemoverTarefa(nome);
-    setRemoveModalState(!removeModalState);
-    window.location.reload();
-  };
 
   return (
     <div
@@ -29,7 +20,7 @@ export default function TaskCard({ id, nome, descricao, dataTermino }) {
       </header>
       <div className="pt-4 w-full gap-5 flex flex-col p-4">
         <p className="pb-3 w-[90%] h-[25%]">{descricao}</p>
-        <div className="mt-[5%]">{dataTermino}</div>
+        <div className="mt-[5%]">{FormatarData(dataTermino)}</div>
         <div className="flex justify-between mt-[5%]">
           <button
             type="button"
@@ -41,8 +32,9 @@ export default function TaskCard({ id, nome, descricao, dataTermino }) {
           </button>
           <RemoveTaskModal
             modalIsOpen={removeModalState}
-            closeModal={setRemoveModalState}
-            onRemove={removeTask}
+            closeModal={() => {
+              setRemoveModalState(false);
+            }}
             taskName={nome}
           />
           <button
@@ -58,6 +50,7 @@ export default function TaskCard({ id, nome, descricao, dataTermino }) {
             closeModal={() => {
               setEditModalState(false);
             }}
+            taskName={nome}
           />
         </div>
       </div>
