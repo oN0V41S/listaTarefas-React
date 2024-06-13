@@ -17,7 +17,7 @@ export async function AdicionarTarefa(task) {
     };
     const body = {
       idUsuario: `${userId}`,
-      nomeTarefa: `${task.nomeTarefa}`,
+      nomeTarefa: `${task.nome}`,
       descricao: `${task.descricao}`,
       dataTermino: `${task.dataTermino}`,
       status: "null",
@@ -83,8 +83,8 @@ export async function RemoverTarefa(nome) {
       { idUsuario: `${userId}`, nomeTarefa: `${nome}` },
       header,
     );
-    // const status = response.result[0].status;
-    console.log(response);
+    const status = response.data.result[0].status;
+    console.log(status)
     return;
   } catch (e) {
     console.log(`Erro ao remover tarefas:\n${e}`);

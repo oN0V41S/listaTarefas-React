@@ -2,9 +2,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 
-import { AtualizarTarefa } from "../../services/tarefas";
-
-export default function EditTaskModal({ modalIsOpen, closeModal, taskName }) {
+export default function EditTaskModal({ modalIsOpen, closeModal, taskName,onUpdate }) {
   Modal.setAppElement("#root");
 
   const [taskUpdate, setTaskUpdate] = useState({
@@ -12,11 +10,6 @@ export default function EditTaskModal({ modalIsOpen, closeModal, taskName }) {
     descricao: "",
     dataTermino: "",
   });
-
-  const Submit = () => {
-    AtualizarTarefa(taskUpdate, taskName);
-    closeModal();
-  };
 
   return (
     <Modal
@@ -66,7 +59,7 @@ export default function EditTaskModal({ modalIsOpen, closeModal, taskName }) {
         <Link
           className="bg-blue-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
           to=""
-          onClick={Submit}
+          onClick={()=>{onUpdate(taskName,taskUpdate); closeModal()}}
           replace
         >
           Atualizar Tarefa

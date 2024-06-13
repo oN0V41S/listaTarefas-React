@@ -1,33 +1,22 @@
 import { useState } from "react";
 import Modal from "react-modal";
 
-import { AdicionarTarefa } from "../../services/tarefas";
-import { FaDumpster } from "react-icons/fa";
+// import { FaDumpster } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function CreateTaskModal({
   modalIsOpen,
   closeModal,
   taskBackground,
+  addTask,
 }) {
   Modal.setAppElement("#root");
 
   const [task, setTask] = useState({
-    nomeTarefa: "",
+    nome: "",
     descricao: "",
     dataTermino: "",
   });
-
-  const Submit = () => {
-    // Implementar Serviço para adicionar tarefa
-    AdicionarTarefa(task);
-    setTask({
-      nomeTarefa: "",
-      descricao: "",
-      dataTermino: "",
-    });
-    closeModal();
-  };
 
   return (
     <Modal
@@ -52,9 +41,9 @@ export default function CreateTaskModal({
           placeholder="Nome da Tarefa"
           className="pl-5 pr-5 p-3 w-[85%] text-slate-500 border-none shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] rounded-lg focus:outline-none focus:shadow-[0_0_10px_-3.5px_rgba(0,0,0,0.9)] transition all"
           onChange={(e) => {
-            setTask({ ...task, nomeTarefa: e.target.value });
+            setTask({ ...task, nome: e.target.value });
           }}
-          value={task.nomeTarefa}
+          value={task.nome}
           name="nome"
         />
         <textarea
@@ -80,7 +69,10 @@ export default function CreateTaskModal({
         <Link
           className="bg-green-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
           to="/tarefas"
-          onClick={Submit}
+          onClick={() => {
+            addTask(task);
+            setTask({});
+          }}
         >
           Adicionar Tarefa
         </Link>

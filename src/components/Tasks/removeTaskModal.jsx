@@ -6,10 +6,6 @@ import { RemoverTarefa } from "../../services/tarefas";
 export default function RemoveTaskModal({ modalIsOpen, closeModal, taskName }) {
   Modal.setAppElement("#root");
 
-  const removeTask = () => {
-    RemoverTarefa(taskName);
-  };
-
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -25,8 +21,6 @@ export default function RemoveTaskModal({ modalIsOpen, closeModal, taskName }) {
         <Link
           to="/tarefas"
           className="bg-green-500 pl-7 p-1 pr-7 rounded-md shadow-md hover:shadow-lg focus:shadow-lg transition-all"
-          onClick={removeTask}
-          replace
         >
           Sim
         </Link>

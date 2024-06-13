@@ -8,11 +8,12 @@ import TaskCard from "../../components/Tasks/taskCard";
 
 // Serviços e Funções
 import React, { useEffect, useState } from "react";
-import { BuscarTarefas,RemoverTarefa } from "../../services/tarefas";
+import { AdicionarTarefa, AtualizarTarefa, BuscarTarefas, RemoverTarefa } from "../../services/tarefas";
 
 // Assets
 import adicionar from "../../assets/adicionar.png";
 import { BsListTask } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function Tarefas() {
   // Manipulação de Tarefas
@@ -26,21 +27,46 @@ function Tarefas() {
     const listarTarefas = async () => {
       const tarefas = await BuscarTarefas();
       setTasks(tarefas);
+      console.log(tasks)
     };
     listarTarefas();
   }, []);
 
-  const removeTask = ({ nome }) => {
-    try {
-      RemoverTarefa(nome);
-    } catch (e) {
-      console.log("erro ao remover tarefa");
+  const addTask = (task) => {
+    console.log(task)
+    if(!task.nome || !task.descricao || !task.dataTermino){
+      return window.alert("Parâmetros faltando")
     }
+    setTasks([...tasks, task]);
+    AdicionarTarefa(task);
+    setModalCreateTask(false)
   };
+
+  const removeTask = (nome) => {
+    // Atualizar estado local
+    const tasksRemoved = tasks.filter((tarefa) => tarefa.nome !== nome);
+    setTasks(tasksRemoved);
+    RemoverTarefa(nome);
+  };
+
+  const updateTask = (nomeTarefa,novaTarefa) => {
+    console.log(novaTarefa)
+    const tarefa = tasks.find((tarefa) => tarefa.nome === nomeTarefa);
+    const tarefasRestantes = tasks.filter((tarefa) => tarefa.nome !== nomeTarefa);
+
+    const tarefaAtualizadaComNovosValores = {
+      ...tarefa,
+      ...novaTarefa,
+    };
+
+
+    setTasks([...tarefasRestantes, tarefaAtualizadaComNovosValores]);
+    // AtualizarTarefa(novaTarefa,nomeTarefa)
+  }
 
   return (
     <Layout>
-      <main className="p-5">
+      <main className="p-5 min-h-[90vh]">
         <div
           id="titulo"
           className="w-[83vw] flex mt-4 mb-10 m-auto align-center"
@@ -73,9 +99,8 @@ function Tarefas() {
                 nome={task.nome}
                 descricao={task.descricao}
                 dataTermino={task.dataTermino}
-                onRemove={() => {
-                  removeTask(task.nome);
-                }}
+                onRemove={removeTask}
+                onUpdate={updateTask}
               />
             ))
           ) : (
@@ -85,6 +110,7 @@ function Tarefas() {
         <CreateTaskModal
           modalIsOpen={modalCreateTask}
           closeModal={() => setModalCreateTask(!modalCreateTask)}
+          addTask={addTask}
         />
       </main>
     </Layout>
