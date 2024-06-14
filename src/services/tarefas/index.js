@@ -84,7 +84,7 @@ export async function RemoverTarefa(nome) {
       header,
     );
     const status = response.data.result[0].status;
-    console.log(status)
+    console.log(status);
     return;
   } catch (e) {
     console.log(`Erro ao remover tarefas:\n${e}`);
@@ -108,14 +108,14 @@ export async function AtualizarTarefa(task, taskName) {
       idUsuario: `${userId}`,
       nomeTarefa: `${taskName}`,
       novoNomeTarefa: `${task.nome}`,
-      novaDataTermino: `${task.dataTermino}`,
+      novaDataTermino: `${task.dataTermino}T00:00:00.000+00:00`,
       novaDescricao: `${task.descricao}`,
-      novoStatus: "",
-      novaCor: "",
+      novoStatus: "null",
+      novaCor: "null",
     };
 
     const response = await axios.post(`${url}/alterartarefa/`, body, header);
-    console.log(response)
+    console.log(response);
     return;
   } catch (e) {
     console.log(`Erro ao Atualizar tarefas:\n${e}`);
@@ -124,10 +124,10 @@ export async function AtualizarTarefa(task, taskName) {
 
 export function FormatarData(dataString) {
   // Remover a parte da hora da string
-  const dataSemHora = dataString.split('T')[0];
+  const dataSemHora = dataString.split("T")[0];
 
   // Inverter a ordem da data (ano-mês-dia)
-  const partesData = dataSemHora.split('-');
+  const partesData = dataSemHora.split("-");
   const dataInvertida = `${partesData[2]}-${partesData[1]}-${partesData[0]}`;
 
   return dataInvertida;

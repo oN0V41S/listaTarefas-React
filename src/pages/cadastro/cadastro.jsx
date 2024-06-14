@@ -138,7 +138,9 @@ export default function Cadastro() {
         <div className="signup-link flex text-white m-4 m-auto justify-between">
           {textoErro && <p className="textErro">{textosErro[textoErro]}</p>}
           <p>Já tem uma conta?</p>
-          <Link to="/" className='link'>Faça Login</Link>
+          <Link to="/" className="link">
+            Faça Login
+          </Link>
         </div>
       </LoginForm>
     </main>

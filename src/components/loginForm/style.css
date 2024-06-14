@@ -1,7 +1,5 @@
 .formLogin{
   backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.15);
-  padding: 40px;
   border-radius: 10px;
 }
 

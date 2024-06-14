@@ -8,12 +8,16 @@ import TaskCard from "../../components/Tasks/taskCard";
 
 // Serviços e Funções
 import React, { useEffect, useState } from "react";
-import { AdicionarTarefa, AtualizarTarefa, BuscarTarefas, RemoverTarefa } from "../../services/tarefas";
+import {
+  AdicionarTarefa,
+  AtualizarTarefa,
+  BuscarTarefas,
+  RemoverTarefa,
+} from "../../services/tarefas";
 
 // Assets
 import adicionar from "../../assets/adicionar.png";
-import { BsListTask } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import ListaTarefas from "../../assets/listaTarefa.png";
 
 function Tarefas() {
   // Manipulação de Tarefas
@@ -27,19 +31,19 @@ function Tarefas() {
     const listarTarefas = async () => {
       const tarefas = await BuscarTarefas();
       setTasks(tarefas);
-      console.log(tasks)
+      console.log(tasks);
     };
     listarTarefas();
   }, []);
 
   const addTask = (task) => {
-    console.log(task)
-    if(!task.nome || !task.descricao || !task.dataTermino){
-      return window.alert("Parâmetros faltando")
+    console.log(task);
+    if (!task.nome || !task.descricao || !task.dataTermino) {
+      return window.alert("Parâmetros faltando");
     }
     setTasks([...tasks, task]);
     AdicionarTarefa(task);
-    setModalCreateTask(false)
+    setModalCreateTask(false);
   };
 
   const removeTask = (nome) => {
@@ -49,29 +53,30 @@ function Tarefas() {
     RemoverTarefa(nome);
   };
 
-  const updateTask = (nomeTarefa,novaTarefa) => {
-    console.log(novaTarefa)
+  const updateTask = (nomeTarefa, novaTarefa) => {
+    console.log(novaTarefa);
     const tarefa = tasks.find((tarefa) => tarefa.nome === nomeTarefa);
-    const tarefasRestantes = tasks.filter((tarefa) => tarefa.nome !== nomeTarefa);
+    const tarefasRestantes = tasks.filter(
+      (tarefa) => tarefa.nome !== nomeTarefa,
+    );
 
     const tarefaAtualizadaComNovosValores = {
       ...tarefa,
       ...novaTarefa,
     };
 
-
     setTasks([...tarefasRestantes, tarefaAtualizadaComNovosValores]);
-    // AtualizarTarefa(novaTarefa,nomeTarefa)
-  }
+    AtualizarTarefa(novaTarefa, nomeTarefa);
+  };
 
   return (
     <Layout>
       <main className="p-5 min-h-[90vh]">
         <div
           id="titulo"
-          className="w-[83vw] flex mt-4 mb-10 m-auto align-center"
+          className="w-[83vw] flex mt-4 mb-10 m-auto align-center gap-2"
         >
-          <BsListTask className="mt-auto mb-auto mr-5" />
+          <img src={ListaTarefas} alt="Lista de Tarefas" className="w-[2vw]"/>
           <h1 className="h-max font-normal text-xl">TAREFAS</h1>
         </div>
         <div

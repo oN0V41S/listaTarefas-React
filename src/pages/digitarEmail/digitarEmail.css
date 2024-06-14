@@ -1,9 +1,3 @@
-.login {
-  background: url('../../assets/backgroundForm.png');
-  background-size: cover;
-  background-position: center;
-}
-
 .login h1 {
   text-align: center;
   font-size: 30px;

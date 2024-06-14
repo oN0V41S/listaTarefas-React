@@ -1,14 +1,19 @@
 // Funções
 import { useState } from "react";
-import { FormatarData, RemoverTarefa } from "../../services/tarefas";
+import { FormatarData } from "../../services/tarefas";
 
 // Componentes
 import EditTaskModal from "./editTasdkModal";
-import RemoveTaskModal from "./removeTaskModal";
 
-export default function TaskCard({ nome, descricao, dataTermino,onRemove,onUpdate }) {
+export default function TaskCard({
+  nome,
+  descricao,
+  dataTermino,
+  onRemove,
+  onUpdate,
+}) {
   const [editModalState, setEditModalState] = useState(false);
-  const dataFormatada = FormatarData(dataTermino)
+  const dataFormatada = FormatarData(dataTermino);
 
   return (
     <div
@@ -24,7 +29,9 @@ export default function TaskCard({ nome, descricao, dataTermino,onRemove,onUpdat
         <div className="flex justify-between mt-[5%]">
           <button
             type="button"
-            onClick={()=>{onRemove(nome)}}
+            onClick={() => {
+              onRemove(nome);
+            }}
           >
             Remover
           </button>
