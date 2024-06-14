@@ -171,7 +171,7 @@ module.exports ={
                  )
                  
 
-                 if(resultado.modifiedCount != 1){
+                 if(resultado.matchedCount != 1){
                     json.result.push({
                         status: 'codigo errado'
                     })
