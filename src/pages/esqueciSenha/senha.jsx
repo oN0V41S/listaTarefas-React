@@ -1,3 +1,4 @@
+import "../login/login.css";
 import './senha.css'
 
 // Importando Funções e Componentes

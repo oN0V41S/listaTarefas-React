@@ -1,4 +1,4 @@
-import "./cadastro.css";
+import "../login/login.css";
 
 // Importando Funções e Componentes
 import React, { useState } from "react";

@@ -1,12 +1,14 @@
 import "./valEmail.css";
+import "../login/login.css";
+
 // Importando Funções e Componentes
-import React, {useState} from 'react';
-import {Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "../../components/loginForm";
 import { InputField } from "../../components/loginForm";
 
 // Importando as rotas da Api
-import validarEmail from '../../services/auth/email';
+import validarEmail from "../../services/auth/email";
 import reenviarCodigo from "../../services/auth/reenviarCodigo";
 
 export default function ValidarEmail() {
@@ -23,27 +25,27 @@ export default function ValidarEmail() {
   const [timeLeft, setTimeLeft] = useState(60);
 
   // Pegando email do localStorage
-  let emailLocalSotorage = localStorage.getItem('email');
+  let emailLocalSotorage = localStorage.getItem("email");
 
   // Usando a biblioteca 'useNavigate'
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChangeCdVerificacao = (e) => {
-    setCdVerificacao(e.target.value)
-  }
+    setCdVerificacao(e.target.value);
+  };
 
   // Mensagens de erro
   const textosErro = {
     campoVazio: "Preencha todos os campos",
-    codigoErrado: "O código esta errado"
-  }
-  async function reenviarCodigoVerificacao(){
-    reenviarCodigo(emailLocalSotorage)
-    setEnviarCodigo(true)
-    setTimeLeft(60)
+    codigoErrado: "O código esta errado",
+  };
+  async function reenviarCodigoVerificacao() {
+    reenviarCodigo(emailLocalSotorage);
+    setEnviarCodigo(true);
+    setTimeLeft(60);
 
     const timer = setInterval(() => {
-      setTimeLeft(prevTime => {
+      setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
           clearInterval(timer);
           setEnviarCodigo(false);
@@ -55,45 +57,61 @@ export default function ValidarEmail() {
   }
 
   const onSubmit = () => {
-
     setIsLoading(true);
 
-    if(cdVerificacao){
-
-      validarEmail(emailLocalSotorage, cdVerificacao).then(retorno => {
-
-        if(retorno.validacao === true ){
-
-          navigate('/')
-        }else{
-          setTextosErros('codigoErrado')
+    if (cdVerificacao) {
+      validarEmail(emailLocalSotorage, cdVerificacao).then((retorno) => {
+        if (retorno.validacao === true) {
+          navigate("/");
+        } else {
+          setTextosErros("codigoErrado");
         }
         setIsLoading(false);
       });
-    }else{
-      setTextosErros('campoVazio')
+    } else {
+      setTextosErros("campoVazio");
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <main className="login m-auto w-full mt-0 pt-20 h-[100vh]">
-      <LoginForm formTitle="Validar Email" formButton={isLoading ? "Carregando..." : "Validar"} onSubmit={onSubmit} isLoading={isLoading}>
-        <p className="texto-normal">Um código de vereficação foi enviado para o email: {emailLocalSotorage}</p>
-        <InputField type="text" placeholder="código de Verificação" value={cdVerificacao} onChange={onChangeCdVerificacao}>
-        </InputField>
+      <LoginForm
+        formTitle="Validar Email"
+        formButton={isLoading ? "Carregando..." : "Validar"}
+        onSubmit={onSubmit}
+        isLoading={isLoading}
+      >
+        <p className="texto-normal">
+          Um código de vereficação foi enviado para o email:{" "}
+          {emailLocalSotorage}
+        </p>
+        <InputField
+          type="text"
+          placeholder="código de Verificação"
+          value={cdVerificacao}
+          onChange={onChangeCdVerificacao}
+        ></InputField>
         <div className="signup-link">
-          {textoErros &&(
-            <p className="texto-erro">{textosErro[textoErros]}</p>
-          )}
+          {textoErros && <p className="texto-erro">{textosErro[textoErros]}</p>}
           <p className="texto-normal">Ja possui Conta?</p>
-          <Link className="link" to="/">Login</Link>
+          <Link className="link" to="/">
+            Login
+          </Link>
           {enviarCodigo ? (
-            <p className="texto-normal">Por favor, aguarde {timeLeft} segundos para reenviar  .</p>
+            <p className="texto-normal">
+              Por favor, aguarde {timeLeft} segundos para reenviar .
+            </p>
           ) : (
-            <button type="button" onClick={reenviarCodigoVerificacao} className="link">Reenviar código de vereficação</button>
+            <button
+              type="button"
+              onClick={reenviarCodigoVerificacao}
+              className="link"
+            >
+              Reenviar código de vereficação
+            </button>
           )}
-          </div>
+        </div>
       </LoginForm>
     </main>
   );
