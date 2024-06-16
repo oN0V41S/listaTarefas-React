@@ -34,6 +34,7 @@ export default function DigitarEmail() {
   const onSubmit = () => {
     setIsLoading(true);
 
+    toString(email);
     if (email) {
       reenviarCodigo(email);
       localStorage.setItem("email", email);
