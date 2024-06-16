@@ -31,11 +31,11 @@ export default function Layout({ children }) {
   const Footer = () => {
     return (
       <footer className="flex flex-col gap-10 lg:gap-0 lg:flex-row w-full m-auto justify-between pr-[5vw] pl-[5vw] pb-[8vh] pt-[5vh] bg-white">
-        <section id="logo" className="flex items-center">
-          <img src={logo} alt="logo" className="w-[10vw]" />
+        <section id="logo" className="flex items-center m-auto lg:m-0">
+          <img src={logo} alt="logo" className="w-[20vw] lg:w-[10vw]" />
         </section>
-        <section id="devs" className="flex flex-col gap-2">
-          <h1 className="font-bold">Desenvolvedores</h1>
+        <section id="devs" className="flex flex-col gap-2 m-auto lg:m-0">
+          <h1 className="font-bold w-max text-center">Desenvolvedores</h1>
           <a
             href="https://github.com/oN0V41S"
             className="flex gap-2 items-center"
@@ -43,7 +43,7 @@ export default function Layout({ children }) {
             <img
               src={logoGithub}
               alt="Github Rafael Novais"
-              className="w-[2vw]"
+              className="w-[8vw] lg:w-[2vw]"
             />
             <h1>Rafael Novais</h1>
           </a>
@@ -54,7 +54,7 @@ export default function Layout({ children }) {
             <img
               src={logoGithub}
               alt="Github João Campos"
-              className="w-[2vw]"
+              className="w-[8vw] lg:w-[2vw]"
             />
             <h1>João Campos</h1>
           </a>
@@ -65,7 +65,7 @@ export default function Layout({ children }) {
             <img
               src={logoGithub}
               alt="Github Miguel Pereira"
-              className="w-[2vw]"
+              className="w-[8vw] lg:w-[2vw]"
             />
             <h1>Miguel Pereira</h1>
           </a>
@@ -76,7 +76,7 @@ export default function Layout({ children }) {
             <img
               src={logoGithub}
               alt="Github Vinicius Castro"
-              className="w-[2vw]"
+              className="w-[8vw] lg:w-[2vw]"
             />
             <h1>Vinicius Castro</h1>
           </a>
@@ -85,21 +85,21 @@ export default function Layout({ children }) {
           <ul id="icons" className="flex w-max m-auto gap-4 ">
             <li>
               <a href="https://www.instagram.com/itechforce_ofc/?igshid=YzVkODRmOTdmMw%3D%3D">
-                <img src={logoInsta} alt="logo-instagram" className="w-[2vw]" />
+                <img src={logoInsta} alt="logo-instagram" className="w-[7vw] lg:w-[2vw]" />
               </a>
             </li>
             <li>
               <a href="https://www.youtube.com/channel/UCA4CY4WQ5ir7SB6wVnpf8YQ">
-                <img src={logoYoutube} alt="logo-Youtube" className="w-[2vw]" />
+                <img src={logoYoutube} alt="logo-Youtube" className="w-[7vw] lg:w-[2vw]" />
               </a>
             </li>
             <li>
               <a href="https://github.com/oN0V41S/tasklist-institutional">
-                <img src={logoGithub} alt="logo-github" className="w-[2vw]" />
+                <img src={logoGithub} alt="logo-github" className="w-[7vw] lg:w-[2vw]" />
               </a>
             </li>
           </ul>
-          <p>TechForce©2024 Todos os direitos reservados</p>
+          <p className="text-sm w-fulltext-center">TechForce©2024 Todos os direitos reservados</p>
         </section>
       </footer>
     );
