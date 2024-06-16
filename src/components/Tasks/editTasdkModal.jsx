@@ -2,7 +2,12 @@ import { useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 
-export default function EditTaskModal({ modalIsOpen, closeModal, taskName,onUpdate }) {
+export default function EditTaskModal({
+  modalIsOpen,
+  closeModal,
+  taskName,
+  onUpdate,
+}) {
   Modal.setAppElement("#root");
 
   const [taskUpdate, setTaskUpdate] = useState({
@@ -10,6 +15,13 @@ export default function EditTaskModal({ modalIsOpen, closeModal, taskName,onUpda
     descricao: "",
     dataTermino: "",
   });
+
+  const validarcampos = () => {
+    if (!taskUpdate.nome || !taskUpdate.descricao || !taskUpdate.dataTermino) {
+      let erro = document.getElementById("logAddTask")
+      return erro.innerText = "Complete todos campos!!"
+    }
+  }
 
   return (
     <Modal
@@ -59,12 +71,22 @@ export default function EditTaskModal({ modalIsOpen, closeModal, taskName,onUpda
         <Link
           className="bg-blue-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
           to=""
-          onClick={()=>{onUpdate(taskName,taskUpdate); closeModal()}}
+          onClick={() => {
+            validarcampos();
+            onUpdate(taskName, taskUpdate);
+            setTaskUpdate({
+              nome: "",
+              descricao: "",
+              dataTermino: ""
+            });
+            closeModal();
+          }}
           replace
         >
           Atualizar Tarefa
         </Link>
       </form>
+      <p id="logAddTask" className="w-full text-red-600 text-center"></p>
     </Modal>
   );
 }

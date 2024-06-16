@@ -77,6 +77,7 @@ export default function CreateTaskModal({
           Adicionar Tarefa
         </Link>
       </form>
+      <p id="logAddTask" className="w-full text-red-600 text-center"></p>
     </Modal>
   );
 }

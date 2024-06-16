@@ -37,9 +37,9 @@ function Tarefas() {
   }, []);
 
   const addTask = (task) => {
-    console.log(task);
     if (!task.nome || !task.descricao || !task.dataTermino) {
-      return window.alert("Parâmetros faltando");
+      let erro = document.getElementById("logAddTask")
+      return erro.innerText = "Complete todos campos!!"
     }
     setTasks([...tasks, task]);
     AdicionarTarefa(task);
@@ -54,7 +54,6 @@ function Tarefas() {
   };
 
   const updateTask = (nomeTarefa, novaTarefa) => {
-    console.log(novaTarefa);
     const tarefa = tasks.find((tarefa) => tarefa.nome === nomeTarefa);
     const tarefasRestantes = tasks.filter(
       (tarefa) => tarefa.nome !== nomeTarefa,
