@@ -55,7 +55,8 @@ export default function Cadastro() {
     emailJaExiste:
       "O e-mail inserido já está em uso. Por favor, tente com um e-mail diferente ou faça login se já possui uma conta.",
     emailDiferente:
-      "Os emails informados não coincidem. Por favor, verifique e tente novamente.",
+      "Os e-mails informados não coincidem. Por favor, verifique e tente novamente.",
+    emailErrado: "O e-mail deve conter o '@' ",
   };
 
   const onSubmit = () => {
@@ -65,14 +66,19 @@ export default function Cadastro() {
     if (password && email && username && password1) {
       if (password1 === password) {
         if (email === email1) {
-          cadastro(username, email, password).then((retorno) => {
+          if(email.includes('@')){
+            cadastro(username, email, password).then((retorno) => {
+              setIsLoading(false);
+              if (retorno.validacao === false) {
+                setTextErro("emailJaExiste");
+              } else {
+                navigate("/validarEmail");
+              }
+            });
+          }else{
             setIsLoading(false);
-            if (retorno.validacao === false) {
-              setTextErro("emailJaExiste");
-            } else {
-              navigate("/validarEmail");
-            }
-          });
+            setTextErro('emailErrado')
+          }
         } else {
           setIsLoading(false);
           setTextErro("emailDiferente");
