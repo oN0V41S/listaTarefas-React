@@ -16,11 +16,18 @@ export default function EditTaskModal({
     dataTermino: "",
   });
 
-  const validarcampos = () => {
+  const onSubmit = () => {
     if (!taskUpdate.nome || !taskUpdate.descricao || !taskUpdate.dataTermino) {
       let erro = document.getElementById("logAddTask")
       return erro.innerText = "Complete todos campos!!"
     }
+    onUpdate(taskName, taskUpdate);
+    setTaskUpdate({
+      nome: "",
+      descricao: "",
+      dataTermino: ""
+    });
+    closeModal();
   }
 
   return (
@@ -71,22 +78,13 @@ export default function EditTaskModal({
         <Link
           className="bg-blue-400 p-7 pt-2 pb-2 rounded-xl shadow-[0_0_10px_-5px_rgba(0,0,0,0.9)] hover:shadow-[0_0_10px_-2px_rgba(0,0,0,0.9)] transition-all text-white"
           to=""
-          onClick={() => {
-            validarcampos();
-            onUpdate(taskName, taskUpdate);
-            setTaskUpdate({
-              nome: "",
-              descricao: "",
-              dataTermino: ""
-            });
-            closeModal();
-          }}
+          onClick={onSubmit}
           replace
         >
           Atualizar Tarefa
         </Link>
       </form>
-      <p id="logAddTask" className="w-full text-red-600 text-center"></p>
+      <p id="logAddTask" className="w-full text-red-600 text-center mt-2"></p>
     </Modal>
   );
 }
