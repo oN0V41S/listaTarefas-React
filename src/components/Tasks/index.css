@@ -1,0 +1,6 @@
+@media (max-width: 700px) {
+  .ReactModal__Content{
+    width: 80vw !important;
+    height: max-content !important;
+  }
+}
