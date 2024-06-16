@@ -1,4 +1,4 @@
-.formLogin{
+.formLogin {
   backdrop-filter: blur(20px);
   border-radius: 10px;
 }
@@ -56,4 +56,76 @@
 
 .signup-link p a:hover {
   text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .formLogin {
+    padding: 20px;
+    width: 80%;
+  }
+
+  .formLogin input {
+    font-size: 14px;
+    padding: 15px 35px 15px 20px;
+  }
+
+  .input-field .icon {
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formLogin {
+    padding: 15px;
+    width: 90%;
+  }
+
+  .formLogin input {
+    font-size: 14px;
+    padding: 15px 30px 15px 20px;
+  }
+
+  .input-field .icon {
+    right: 15px;
+  }
+
+  .recall-forget {
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .recall-forget label {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formLogin {
+    padding: 10px;
+    width: 95%;
+  }
+
+  .formLogin h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .formLogin input {
+    font-size: 12px;
+    padding: 10px 25px 10px 15px;
+  }
+
+  .input-field .icon {
+    right: 10px;
+  }
+
+  .recall-forget {
+    font-size: 12px;
+  }
+
+  .container .signup-link {
+    font-size: 12px;
+  }
 }
