@@ -15,8 +15,8 @@ export default function Layout({ children }) {
 
   const Header = () => {
     return (
-      <header className="flex items-center justify-between w-[100%] pr-[15vw] pl-[15vw] p-5 bg-white">
-        <img src={logo} alt="logo" className="m-0 mt-auto mb-auto w-[8vw]" />
+      <header className="flex items-center justify-between w-[100%] lg:pr-[15vw] lg:pl-[15vw] p-5 bg-white">
+        <img src={logo} alt="logo" className="m-0 mt-auto mb-auto w-[15vw] lg:w-[8vw]" />
         <h1 className="font-4 font-bold">Lista de Tarefas</h1>
         <button id="usuario" className="flex items-center gap-1">
           <Link to="/" onClick={onLogout} className="flex gap-2 items-center">
