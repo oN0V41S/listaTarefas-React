@@ -73,9 +73,9 @@ function Tarefas() {
       <main className="p-5 min-h-[90vh]">
         <div
           id="titulo"
-          className="w-[83vw] flex mt-4 mb-10 m-auto align-center gap-2"
+          className="w-[83vw] flex mt-4 mb-10 m-auto items-center gap-2"
         >
-          <img src={ListaTarefas} alt="Lista de Tarefas" className="w-[2vw]"/>
+          <img src={ListaTarefas} alt="Lista de Tarefas" className="w-[10vw] lg:w-[2vw]"/>
           <h1 className="h-max font-normal text-xl">TAREFAS</h1>
         </div>
         <div
@@ -85,7 +85,7 @@ function Tarefas() {
           <div
             id="adicionar-tarefa"
             onClick={() => setModalCreateTask(!modalCreateTask)}
-            className="m-0 mt-0 mr-0 rounded-lg shadow-xl"
+            className="lg:m-0 lg:mt-0 lg:mr-0 m-auto rounded-lg shadow-xl"
           >
             <div id="titulo-adicionar">
               <h3 className="m-auto p-2 text-center">Adicionar Tarefa</h3>

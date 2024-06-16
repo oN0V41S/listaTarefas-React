@@ -18,7 +18,7 @@ export default function TaskCard({
   return (
     <div
       id="taskCard"
-      className=" bg-white rounded-lg shadow-xl w-[220px] h-auto"
+      className=" bg-white rounded-lg shadow-xl w-[220px] h-auto m-auto lg:m-0"
     >
       <header className="p-2 mt-4 text-center w-[90%] m-auto border-b-4 border-black font-normal rounded-sm ">
         {nome}
