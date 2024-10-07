@@ -8,6 +8,7 @@
 >- [Figma](figma.com) - Utilizado para criar o protótipo do projeto.
 >- [React](react.dev/) - Biblioteca usada para desenvolver o Front-End
 >- [Vercel](vercel.com) - Site utilizado para a hospedagem do projeto
+>- [WEB APP](https://listatarefas-techforce.vercel.app) - Aplicativo web hospedado
 ## Como executar projeto
 > Instale as dependências do projeto:
 >> npm install
